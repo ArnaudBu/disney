@@ -68,12 +68,12 @@ server <- function(input, output, session) {
     )
     df <-  histoTemp %>% tbl_df() %>%
       filter(id %in% values$selectedID, as.Date(temps) <= input$dateRange[2], as.Date(temps) >= input$dateRange[1]) %>%
-      mutate(day = format(as.Date(temps), "%A")) %>%
+      mutate(day = wday(as.POSIXct(strptime(temps, "%Y-%m-%d %H:%M:%S")))) %>%
       filter(day %in% input$jour) %>%
       group_by(temps) %>% 
       summarise(inter2 = mean(as.numeric(attente))) %>%
       mutate(hour_of_day = hour(as.POSIXct(strptime(temps, "%Y-%m-%d %H:%M:%S")))) %>%
-      mutate(day = format(as.Date(temps), "%A")) %>%
+      mutate(day = wday(as.POSIXct(strptime(temps, "%Y-%m-%d %H:%M:%S")))) %>%
       group_by(day, hour_of_day) %>%
       summarise(inter = mean(as.numeric(inter2)), min2 = min(as.numeric(inter2)), max2 = max(as.numeric(inter2))) %>%
       group_by(hour_of_day) %>%

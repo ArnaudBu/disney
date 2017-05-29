@@ -6,13 +6,13 @@ library(plotly)
 library(ggplot2)
 library(viridis)
 
-jours <- c("lundi",
-           "mardi",
-           "mercredi",
-           "jeudi",
-           "vendredi",
-           "samedi",
-           "dimanche")
+jours <- c("lundi" = 2,
+           "mardi" = 3,
+           "mercredi" = 4,
+           "jeudi" = 5,
+           "vendredi" = 6,
+           "samedi" = 7,
+           "dimanche" = 1)
 
 histoTemp <- readRDS("histoTemps.rds")
 attractions <- fread("attractions.csv", encoding = "UTF-8")
