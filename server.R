@@ -54,7 +54,7 @@ server <- function(input, output, session) {
       palette = palet,
       domain = attractions$meanValue)
     
-    leaflet(attractions) %>% addTiles() %>%
+    leaflet(attractions) %>% addTiles(options = providerTileOptions(minZoom = 15, maxZoom = 17)) %>%
       fitBounds(~min(longitude)+0.005, ~min(latitude), ~max(longitude)+0.005, ~max(latitude)) %>%
       addCircleMarkers(~longitude, ~latitude, popup = ~as.character(name), radius = 6, color = ~pal(meanValue2), fillOpacity = 0.9) %>%
       addLegend(position = "bottomleft", pal = pal2, values = ~meanValue, title = "Temps d'attente moyen", labFormat = labelFormat(suffix = "m"))
