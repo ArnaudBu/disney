@@ -23,7 +23,7 @@ ui <- bootstrapPage(
   leafletOutput("map", width = "100%", height = "100%"),
   absolutePanel(id = "controls", class = "panel panel-default", fixed = TRUE,
                 draggable = TRUE, top = 10, left = "auto", right = 20,
-                width = "35%", height = "auto",
+                width = "35%", height = "30%",
                 HTML("<center>"),
                 dateRangeInput('dateRange',
                                label = 'Intervalle de date:',
@@ -38,8 +38,8 @@ ui <- bootstrapPage(
   ),
   absolutePanel(id = "plots", class = "panel panel-default", fixed = TRUE,
                 draggable = TRUE, bottom = 10, left = "auto", right = 20,
-                width = "35%", height = "auto",
+                width = "35%", height = "60%",
                 h5("Temps d'attentes (m) moyens, maximum, et minimum sur l'ensemble des attractions sélectionnées"),
-                plotlyOutput("graphe")
+                plotlyOutput("graphe", height = "90%")
   )
 )
