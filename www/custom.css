@@ -9,3 +9,7 @@
 #graphe {
   background: rgba(255, 255, 255, 0.7);
 }
+
+div.leaflet-bottom:nth-child(3) {
+  width: 15%;
+}

@@ -57,7 +57,7 @@ server <- function(input, output, session) {
     leaflet(attractions) %>% addTiles() %>%
       fitBounds(~min(longitude)+0.005, ~min(latitude), ~max(longitude)+0.005, ~max(latitude)) %>%
       addCircleMarkers(~longitude, ~latitude, popup = ~as.character(name), radius = 6, color = ~pal(meanValue2), fillOpacity = 0.9) %>%
-      addLegend(position = "bottomleft", pal = pal2, values = ~meanValue, title = "Temps d'attente moyen (m)")
+      addLegend(position = "bottomleft", pal = pal2, values = ~meanValue, title = "Temps d'attente moyen", labFormat = labelFormat(suffix = "m"))
   })
   
   output$graphe <- renderPlotly({

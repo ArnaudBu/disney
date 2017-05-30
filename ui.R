@@ -23,7 +23,8 @@ ui <- bootstrapPage(
   leafletOutput("map", width = "100%", height = "100%"),
   absolutePanel(id = "controls", class = "panel panel-default", fixed = TRUE,
                 draggable = TRUE, top = 10, left = "auto", right = 20,
-                width = "300px", height = "auto",
+                width = "35%", height = "auto",
+                HTML("<center>"),
                 dateRangeInput('dateRange',
                                label = 'Intervalle de date:',
                                min = min(as.Date(histoTemp$temps)), 
@@ -31,13 +32,14 @@ ui <- bootstrapPage(
                                start = min(as.Date(histoTemp$temps)),
                                end = max(as.Date(histoTemp$temps))
                 ),
-                checkboxGroupInput("jour", "Jours", jours, inline = TRUE, selected = jours)
+                checkboxGroupInput("jour", "Jours", jours, inline = TRUE, selected = jours),
+                HTML("</center>")
                 
   ),
   absolutePanel(id = "plots", class = "panel panel-default", fixed = TRUE,
                 draggable = TRUE, bottom = 10, left = "auto", right = 20,
-                width = "330px", height = "auto",
-                h5("Temps d'attentes moyens, maximum, et minimum sur l'ensemble des attractions sélectionnées"),
+                width = "35%", height = "auto",
+                h5("Temps d'attentes (m) moyens, maximum, et minimum sur l'ensemble des attractions sélectionnées"),
                 plotlyOutput("graphe")
   )
 )
